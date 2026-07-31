@@ -19,7 +19,7 @@ export function RewardDisplay({ onOpenPrizes }: RewardDisplayProps) {
       </a>
       <div className="flex items-center gap-2 sm:gap-3">
         <motion.div
-          key={streak}
+          key={`streak-${streak}`}
           initial={{ scale: 0.8 }}
           animate={{ scale: 1 }}
           className="stat-chip bg-[#fff0e8] text-[#b83c27]"
@@ -29,7 +29,7 @@ export function RewardDisplay({ onOpenPrizes }: RewardDisplayProps) {
           <strong>{streak}</strong><span className="hidden sm:inline"> streak</span>
         </motion.div>
         <motion.div
-          key={scoops}
+          key={`scoops-${scoops}`}
           initial={{ y: -5 }}
           animate={{ y: 0 }}
           className="stat-chip bg-[#f0ebff] text-[#5a43b5]"

@@ -17,6 +17,7 @@ export function MathQuestion() {
   const [counted, setCounted] = useState<number[]>([])
   const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null)
   const [message, setMessage] = useState('')
+  const [completedAnswer, setCompletedAnswer] = useState<number | null>(null)
   const problem = useMemo(() => generateProblem(level), [level, round])
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export function MathQuestion() {
   }, [problem.id])
 
   const celebrate = () => {
+    setCompletedAnswer(problem.answer)
     setFeedback('correct')
     setMessage(['Brilliant!', 'You got it!', 'Super counting!'][Math.floor(Math.random() * 3)])
     recordCorrect()
@@ -59,6 +61,7 @@ export function MathQuestion() {
   const nextQuestion = () => {
     setFeedback(null)
     setCounted([])
+    setCompletedAnswer(null)
     setRound((value) => value + 1)
   }
 
@@ -100,7 +103,9 @@ export function MathQuestion() {
                 <div className="mb-3 rounded-full bg-[#fff2bc] p-3 text-[#9b6a00]"><Sparkles size={28} /></div>
                 <h2 className="font-display text-4xl font-bold text-slate-900 sm:text-5xl">{message}</h2>
                 <p className="mt-2 text-lg font-bold text-[#6c7390]">You earned a delicious scoop!</p>
-                <NumberCharacter number={problem.answer} mood="happy" />
+                <div className="mt-4">
+                  <NumberCharacter number={completedAnswer ?? problem.answer} mood="happy" size="small" />
+                </div>
                 <button className="primary-button mt-4" onClick={nextQuestion}>
                   Next question <ArrowRight size={22} />
                 </button>
