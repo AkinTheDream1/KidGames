@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fredoka", ui-rounded, sans-serif;
+  --font-sans: "Nunito", ui-rounded, sans-serif;
+}
+
+:root {
+  font-family: "Nunito", ui-rounded, sans-serif;
+  color: #172036;
+  background: #f7f9ff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 4px solid #3286ff;
+  outline-offset: 3px;
+}
+
+.app-shell {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(255, 235, 173, 0.7), transparent 20rem),
+    radial-gradient(circle at 92% 82%, rgba(195, 241, 232, 0.75), transparent 22rem),
+    #f7f9ff;
+}
+
+.app-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .26;
+  background-image: radial-gradient(#8290b1 0.8px, transparent 0.8px);
+  background-size: 22px 22px;
+}
+
+.game-card {
+  min-height: 520px;
+  border: 2px solid rgba(255, 255, 255, .9);
+  border-radius: 2.25rem;
+  background: rgba(255, 255, 255, .72);
+  box-shadow: 0 24px 70px rgba(61, 72, 116, .13), inset 0 0 0 1px rgba(206, 213, 234, .45);
+  backdrop-filter: blur(18px);
+}
+
+.stat-chip {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: .4rem;
+  border-radius: 999px;
+  padding: 0 .85rem;
+  font-size: .95rem;
+}
+
+.icon-button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 1rem;
+  transition: transform .15s ease;
+}
+
+.icon-button:active {
+  transform: scale(.92);
+}
+
+.answer-button {
+  min-height: 76px;
+  border: 0;
+  border-radius: 1.4rem;
+  font-family: "Fredoka", ui-rounded, sans-serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #172036;
+  box-shadow: 0 7px 0 var(--button-shadow);
+  transition: filter .18s ease, transform .18s ease;
+}
+
+.answer-button:hover {
+  filter: brightness(1.03);
+  transform: translateY(-2px);
+}
+
+.answer-0 {
+  --button-shadow: #d88d1e;
+  background: #ffc85b;
+}
+
+.answer-1 {
+  --button-shadow: #2fa99d;
+  background: #65d9ce;
+}
+
+.answer-2 {
+  --button-shadow: #7862c7;
+  background: #a895ef;
+}
+
+.primary-button {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  border: 0;
+  border-radius: 1.15rem;
+  background: #202840;
+  padding: .8rem 1.4rem;
+  font-family: "Nunito", ui-rounded, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 6px 0 #0e1321;
+  transition: transform .15s ease;
+}
+
+.primary-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #0e1321;
+}
+
+.floating-shape {
+  position: absolute;
+  z-index: -1;
+  border-radius: 32%;
+  opacity: .6;
+  filter: blur(.2px);
+  animation: float 7s ease-in-out infinite;
+}
+
+.shape-one {
+  top: 22%;
+  left: -2rem;
+  width: 5rem;
+  height: 5rem;
+  rotate: 25deg;
+  background: #ffd56e;
+}
+
+.shape-two {
+  right: -2rem;
+  bottom: 22%;
+  width: 7rem;
+  height: 7rem;
+  rotate: 42deg;
+  background: #99e4da;
+  animation-delay: -2s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-14px) rotate(8deg); }
+}
+
+@media (max-width: 640px) {
+  .game-card {
+    min-height: 510px;
+    border-radius: 1.75rem;
+  }
+
+  .answer-button {
+    min-height: 68px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
