@@ -1,0 +1,206 @@
+:root {
+  --bg: #1e1b4b;
+  --bg-2: #312e81;
+  --card: #ffffff;
+  --accent: #6c5ce7;
+  --accent-2: #00b894;
+  --text: #2d3436;
+  font-family: 'Baloo 2', 'Comic Sans MS', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(160deg, var(--bg), var(--bg-2));
+  color: var(--text);
+}
+
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+
+.app-header {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.app-header h1 {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  margin: 0.2rem 0;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.app-header p {
+  margin: 0;
+  opacity: 0.85;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.game-card {
+  background: var(--card);
+  border: none;
+  border-radius: 20px;
+  padding: 1.5rem;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.15);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  font: inherit;
+  color: var(--text);
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 0 rgba(0, 0, 0, 0.15);
+}
+
+.game-card .emoji {
+  font-size: 2.5rem;
+}
+
+.game-card h2 {
+  margin: 0.5rem 0 0.25rem;
+}
+
+.game-card p {
+  margin: 0;
+  color: #636e72;
+  font-size: 0.95rem;
+}
+
+.panel {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.08s ease;
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn.secondary {
+  background: #dfe6e9;
+  color: var(--text);
+}
+
+.btn.success {
+  background: var(--accent-2);
+}
+
+.badge {
+  font-weight: 700;
+  background: #ffeaa7;
+  color: #6c5000;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+}
+
+/* Memory game */
+.memory-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.memory-tile {
+  aspect-ratio: 1;
+  font-size: 2.2rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  background: var(--accent);
+  color: transparent;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease;
+}
+
+.memory-tile.revealed {
+  background: #ffeaa7;
+  color: #2d3436;
+}
+
+.memory-tile.matched {
+  background: var(--accent-2);
+  color: #fff;
+  cursor: default;
+}
+
+/* Math game */
+.math-question {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 1rem 0;
+}
+
+.math-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.math-option {
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 1rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  background: #dfe6e9;
+  color: var(--text);
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.math-option.correct {
+  background: var(--accent-2);
+  color: #fff;
+}
+
+.math-option.wrong {
+  background: #ff7675;
+  color: #fff;
+}
+
+.feedback {
+  text-align: center;
+  font-weight: 800;
+  min-height: 1.5rem;
+  margin-top: 1rem;
+}
